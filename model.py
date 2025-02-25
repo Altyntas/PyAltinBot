@@ -1,5 +1,5 @@
-from keras.models import Model
-from keras.layers import Dense, Embedding, LSTM, Input
+from keras._tf_keras.keras.models import Model
+from keras._tf_keras.keras.layers import Dense, Embedding, LSTM, Input
 import chatbot_data as dp
 
 
@@ -32,4 +32,6 @@ dense_op = dense(dec_op)
 model = Model([enc_inp, dec_inp], dense_op)
 model.compile(loss='categorical_crossentropy',metrics=['acc'],optimizer='adam')
 
-model.fit([dp.encoder_inp, dp.decoder_inp],dp.decoder_final_output,epochs=10)
+model.fit([dp.encoder_inp, dp.decoder_inp],dp.decoder_final_output,epochs=20)
+
+model.save('mymodel.keras')

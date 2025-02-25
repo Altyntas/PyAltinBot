@@ -150,7 +150,7 @@ for line in clean_ans:
 ### delete
 del(clean_ans, clean_ques, line, lst, word)
 
-from keras.preprocessing.sequence import pad_sequences
+from keras._tf_keras.keras.preprocessing.sequence import pad_sequences
 encoder_inp = pad_sequences(encoder_inp, 13, padding='post', truncating='post')
 decoder_inp = pad_sequences(decoder_inp, 13, padding='post', truncating='post')
 
@@ -162,7 +162,7 @@ decoder_final_output = pad_sequences(decoder_final_output, 13, padding='post', t
 
 del(i)
 
-from keras.utils import to_categorical
+from keras._tf_keras.keras.utils import to_categorical
 decoder_final_output = to_categorical(decoder_final_output, len(vocab))
 
 print("Done")

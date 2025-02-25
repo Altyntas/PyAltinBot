@@ -1,5 +1,5 @@
-from keras.models import Model
-from keras.layers import Input
+from keras._tf_keras.keras.models import Model
+from keras._tf_keras.keras.layers import Input
 import numpy as np
 import model as m
 import chatbot_data as dp
@@ -26,7 +26,7 @@ dec_model = Model([m.dec_inp]+ decoder_states_inputs,
 
 
 
-from keras.preprocessing.sequence import pad_sequences
+from keras._tf_keras.keras.preprocessing.sequence import pad_sequences
 print("##########################################")
 print("#       start chatting ver. 1.0          #")
 print("##########################################")
