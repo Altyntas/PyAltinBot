@@ -1,5 +1,6 @@
 from keras._tf_keras.keras.models import Model
 from keras._tf_keras.keras.layers import Dense, Embedding, LSTM, Input
+from keras._tf_keras.keras.saving import load_model
 import chatbot_data as dp
 
 
@@ -30,8 +31,18 @@ dense = Dense(VOCAB_SIZE, activation='softmax')
 dense_op = dense(dec_op)
 
 model = Model([enc_inp, dec_inp], dense_op)
-model.compile(loss='categorical_crossentropy',metrics=['acc'],optimizer='adam')
 
-model.fit([dp.encoder_inp, dp.decoder_inp],dp.decoder_final_output,epochs=20)
+model.compile(loss='categorical_crossentropy',metrics=['acc'],optimizer='adam')
+model.fit([dp.encoder_inp, dp.decoder_inp],dp.decoder_final_output,epochs=5)
 
 model.save('mymodel.keras')
+
+#На случай если нам нужно сохранять и дообучать модель
+'''
+loaded_model = load_model("mymodel.keras")
+
+loaded_model.compile(loss='categorical_crossentropy',metrics=['acc'],optimizer='adam')
+loaded_model.fit([dp.encoder_inp, dp.decoder_inp],dp.decoder_final_output,epochs=5)
+
+loaded_model.save('mymodel.keras')
+'''
